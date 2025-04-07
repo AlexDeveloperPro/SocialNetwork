@@ -20,3 +20,6 @@ margin-bottom: 15px;
 .card-img, .card-author {
   margin-bottom: 10px;  
 }
+.card-img_max{
+    height: 500px;
+}

@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    use HasFactory;
+    // use HasFactory;
+    protected $primaryKey = 'post_id';
 }
