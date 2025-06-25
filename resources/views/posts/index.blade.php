@@ -1,5 +1,5 @@
 
-     @extends('layouts.layout') {{--подключаемся к шаблону layout.blade.php --}}
+     @extends('layouts.layout', ['title' => 'Главная страница']) {{--подключаемся к шаблону layout.blade.php --}}
     @section('content')
     @if (isset($_POST['search']))
       @if (count($posts)>0)
@@ -25,7 +25,7 @@
         @endforeach
     </div> 
     @if (!isset($_GET['search']))
-    {{$posts->links()}}
+    {{$posts->links('vendor.pagination.simple-tailwind')}}
     @endif 
     @endsection   
      

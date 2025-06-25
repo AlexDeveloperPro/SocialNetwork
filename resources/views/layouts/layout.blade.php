@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang=”en”>
+<html lang=”ru”>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">       
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">  
+    <title>{{$title}}</title>     
 {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 <link href="\css\style.css" rel="stylesheet"> --}}
 
@@ -13,6 +14,7 @@
 <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet"> --}}
 <!-- Scripts -->
 @vite(['resources/css/app.css', 'resources/js/app.js'])
+<link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
 {{-- <link href="\css\bootstrap.min.css" rel="stylesheet"> --}}
 {{-- <link href="\css\style.css" rel="stylesheet">
 <script src="\js\bootstrap.bundle.min.js"></script> --}} 
@@ -44,12 +46,18 @@
   </nav>
  
    <div class="container">
+    @if($errors->any())
+      @foreach ($errors->all() as $error)
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{ session('success') }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+       <span arian-hidden="true">&times;</span>
+      </button>
+     </div>
+     @endforeach
+    @endif
      @if(session('success'))
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-       {{ session('success') }}
-       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-       </button>
-      </div>
+      
       @endif
     @yield('content')
 </div>
